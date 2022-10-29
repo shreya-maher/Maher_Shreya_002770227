@@ -147,7 +147,7 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
 
             if(present.equals("1"))
             {
-                new SystemAdminDashboard().setVisible(true);
+                new HospitalAdminHomePage().setVisible(true);
                 dispose();
             }
             else {
@@ -197,7 +197,7 @@ public class HospitalAdminLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField HospitalPasswordField;
-    private javax.swing.JTextField HospitalUsernameField;
+    public static javax.swing.JTextField HospitalUsernameField;
     private javax.swing.JButton Submit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
