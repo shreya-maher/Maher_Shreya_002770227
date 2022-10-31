@@ -195,7 +195,7 @@ public class CommunityAdminLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField CommunityPasswordField;
-    private javax.swing.JTextField CommunityUsernameField;
+    public static javax.swing.JTextField CommunityUsernameField;
     private javax.swing.JButton Submit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

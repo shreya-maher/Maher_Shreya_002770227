@@ -4,6 +4,14 @@
  */
 package hospitalmgmt_assignment2;
 
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author maher
@@ -26,21 +34,232 @@ public class CommunityAdminPatient extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        CommunityPatient = new javax.swing.JTable();
+        Community = new javax.swing.JTextField();
+        Hospital = new javax.swing.JTextField();
+        House = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
+
+        CommunityPatient.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Name", "Hospital", "Community", "House"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        CommunityPatient.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CommunityPatientMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(CommunityPatient);
+
+        jLabel2.setText("Community");
+
+        jLabel3.setText("Hospital");
+
+        jLabel4.setText("House");
+
+        jButton1.setText("Update");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Delete");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 984, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(384, 384, 384)
+                        .addComponent(jButton1)
+                        .addGap(199, 199, 199)
+                        .addComponent(jButton2))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(370, 370, 370)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addGap(207, 207, 207)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(House, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Hospital, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Community, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 850, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(97, 97, 97)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(110, 110, 110)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Community, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Hospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(House, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addGap(193, 193, 193))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        // TODO add your handling code here:
+        
+        String CommID = CommunityAdminLogin.CommunityUsernameField.getText();
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection CommPatientConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            Statement CommPatientStatement = (Statement) CommPatientConnection.createStatement();
+            String CommPatientSql = ("Select patientid, community, name, house, hospital_encounter  from patientrecords where commid = '"+CommID+"'");
+            PreparedStatement patientPreparedStatement = CommPatientConnection.prepareStatement(CommPatientSql);
+            ResultSet patientResultSet = patientPreparedStatement.executeQuery();
+            DefaultTableModel CommunityPatientModel = (DefaultTableModel)CommunityPatient.getModel();
+            CommunityPatientModel.setRowCount(0);
+            while(patientResultSet.next())
+            {
+            Object CommunityPatient[] = { patientResultSet.getString("patientid"),patientResultSet.getString("name"),
+                patientResultSet.getString("hospital_encounter"),patientResultSet.getString("community"),patientResultSet.getString("house")};
+            CommunityPatientModel.addRow(CommunityPatient);
+            }
+   
+    } catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+   
+    }
+        
+
+        
+    }//GEN-LAST:event_formWindowActivated
+
+    private void CommunityPatientMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CommunityPatientMouseClicked
+        // TODO add your handling code here:
+        DefaultTableModel CommunityPatientModel = (DefaultTableModel)CommunityPatient.getModel();
+         int selectedRowIndex = CommunityPatient.getSelectedRow();
+           
+            House.setText((String) CommunityPatient.getValueAt(selectedRowIndex, 4));          
+            Community.setText((String) CommunityPatient.getValueAt(selectedRowIndex, 3));
+            Hospital.setText((String) CommunityPatient.getValueAt(selectedRowIndex, 2));
+            
+        
+    }//GEN-LAST:event_CommunityPatientMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        DefaultTableModel CommunityPatientModel = (DefaultTableModel)CommunityPatient.getModel();
+         int selectedRowIndex = CommunityPatient.getSelectedRow();
+        String id = (String) CommunityPatient.getValueAt(selectedRowIndex, 0);
+         
+       
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection CommunityPatientConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+           
+            String CommunityPatientSql = ("UPDATE patientrecords SET community = '"+Community.getText()+"', hospital_encounter = '"+Hospital.getText()+"',  house = '"+House.getText()+"' "
+                    + "where patientid  = '"+id+"' ");
+            PreparedStatement CommunityPatientStatement = CommunityPatientConnection.prepareStatement(CommunityPatientSql);
+            CommunityPatientStatement.execute();
+           
+           
+             JOptionPane.showMessageDialog(null,"Records updated succesfully");
+             Hospital.setText("");
+             Community.setText("");
+             House.setText("");
+             
+             
+           
+           
+   
+    } catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+   
+    }                                                      
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+           
+        DefaultTableModel CommunityPatientModel = (DefaultTableModel)CommunityPatient.getModel();
+         int selectedRowIndex = CommunityPatient.getSelectedRow();
+        String id = (String) CommunityPatient.getValueAt(selectedRowIndex, 0);
+        
+        
+         try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection CommunityPatientConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+           
+            String CommunityPatientSql = ("UPDATE patientrecords SET commid  = '' where patientid = '"+id+"' ");
+            PreparedStatement CommunityPatientStatement = CommunityPatientConnection.prepareStatement(CommunityPatientSql);
+            CommunityPatientStatement.execute();
+           
+           
+             JOptionPane.showMessageDialog(null,"Records updated succesfully");
+             Hospital.setText("");
+             Community.setText("");
+             House.setText("");
+             
+             
+           
+           
+   
+    } catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+   
+    }        
+           
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +297,15 @@ public class CommunityAdminPatient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Community;
+    private javax.swing.JTable CommunityPatient;
+    private javax.swing.JTextField Hospital;
+    private javax.swing.JTextField House;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

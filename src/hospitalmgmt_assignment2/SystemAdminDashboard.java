@@ -114,7 +114,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private void MaintainDoctor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainDoctor3ActionPerformed
         // TODO add your handling code here:
         
-        
+        new SystemAdminManageCommunityAdmin().setVisible(true);
+        dispose();
     }//GEN-LAST:event_MaintainDoctor3ActionPerformed
 
     /**
