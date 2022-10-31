@@ -166,6 +166,14 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
             DocAddApp.executeUpdate();
             
             JOptionPane.showMessageDialog(null,"Doctor Has Been Registered To Hospital");
+            
+            DoctorID.setText("");
+             DocName.setText("");
+             DocSpecialisation.setText("");
+             DocCommunity.setText("");
+             DocCity.setText("");
+
+             
             DocAddConnection.close();
 
             
