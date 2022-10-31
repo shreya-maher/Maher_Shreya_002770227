@@ -37,6 +37,7 @@ public class DoctorLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         DoctorPasswordField = new javax.swing.JPasswordField();
         Submit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -66,6 +67,13 @@ public class DoctorLogin extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("CREATE");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -79,7 +87,9 @@ public class DoctorLogin extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(599, 599, 599))
+                        .addGap(458, 458, 458)
+                        .addComponent(jButton1)
+                        .addGap(66, 66, 66))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
@@ -93,9 +103,11 @@ public class DoctorLogin extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
-                .addGap(91, 91, 91)
+                .addGap(52, 52, 52)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton1))
+                .addGap(88, 88, 88)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DoctorUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -159,6 +171,12 @@ public class DoctorLogin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_SubmitActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new DoctorCreate().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -198,6 +216,7 @@ public class DoctorLogin extends javax.swing.JFrame {
     private javax.swing.JPasswordField DoctorPasswordField;
     public static javax.swing.JTextField DoctorUsernameField;
     private javax.swing.JButton Submit;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
