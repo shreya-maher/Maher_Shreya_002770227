@@ -27,7 +27,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         MaintainDoctor = new javax.swing.JButton();
-        MaintainDoctor1 = new javax.swing.JButton();
+        MaintainPatient = new javax.swing.JButton();
         MaintainDoctor2 = new javax.swing.JButton();
         MaintainDoctor3 = new javax.swing.JButton();
 
@@ -41,10 +41,10 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             }
         });
 
-        MaintainDoctor1.setText("Administor Patients");
-        MaintainDoctor1.addActionListener(new java.awt.event.ActionListener() {
+        MaintainPatient.setText("Administor Patients");
+        MaintainPatient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MaintainDoctor1ActionPerformed(evt);
+                MaintainPatientActionPerformed(evt);
             }
         });
 
@@ -72,7 +72,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
                     .addComponent(MaintainDoctor3, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(MaintainDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(MaintainDoctor1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(MaintainPatient, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(MaintainDoctor2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)))
                 .addContainerGap(479, Short.MAX_VALUE))
         );
@@ -80,7 +80,7 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(78, 78, 78)
-                .addComponent(MaintainDoctor1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MaintainPatient, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
                 .addComponent(MaintainDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47)
@@ -95,18 +95,26 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     private void MaintainDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainDoctorActionPerformed
         // TODO add your handling code here:
+         new SystemAdminDoctor().setVisible(true);
+        dispose();
     }//GEN-LAST:event_MaintainDoctorActionPerformed
 
-    private void MaintainDoctor1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainDoctor1ActionPerformed
+    private void MaintainPatientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainPatientActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_MaintainDoctor1ActionPerformed
+         new SystemAdminPatient().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MaintainPatientActionPerformed
 
     private void MaintainDoctor2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainDoctor2ActionPerformed
         // TODO add your handling code here:
+             new SystemAdminHospitalAdmin().setVisible(true);
+        dispose();
     }//GEN-LAST:event_MaintainDoctor2ActionPerformed
 
     private void MaintainDoctor3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MaintainDoctor3ActionPerformed
         // TODO add your handling code here:
+        
+        
     }//GEN-LAST:event_MaintainDoctor3ActionPerformed
 
     /**
@@ -147,8 +155,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton MaintainDoctor;
-    private javax.swing.JButton MaintainDoctor1;
     private javax.swing.JButton MaintainDoctor2;
     private javax.swing.JButton MaintainDoctor3;
+    private javax.swing.JButton MaintainPatient;
     // End of variables declaration//GEN-END:variables
 }

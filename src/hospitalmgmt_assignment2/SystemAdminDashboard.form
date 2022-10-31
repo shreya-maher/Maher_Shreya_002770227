@@ -30,7 +30,7 @@
                   <Component id="MaintainDoctor3" min="-2" pref="295" max="-2" attributes="0"/>
                   <Component id="MaintainDoctor" min="-2" pref="295" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                      <Component id="MaintainDoctor1" alignment="1" max="32767" attributes="0"/>
+                      <Component id="MaintainPatient" alignment="1" max="32767" attributes="0"/>
                       <Component id="MaintainDoctor2" alignment="1" pref="295" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
-              <Component id="MaintainDoctor1" min="-2" pref="120" max="-2" attributes="0"/>
+              <Component id="MaintainPatient" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
               <Component id="MaintainDoctor" min="-2" pref="120" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
@@ -63,12 +63,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaintainDoctorActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="MaintainDoctor1">
+    <Component class="javax.swing.JButton" name="MaintainPatient">
       <Properties>
         <Property name="text" type="java.lang.String" value="Administor Patients"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaintainDoctor1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MaintainPatientActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="MaintainDoctor2">

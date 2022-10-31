@@ -145,7 +145,7 @@ public class CommunityAdminLogin extends javax.swing.JFrame {
 
             if(present.equals("1"))
             {
-                new SystemAdminDashboard().setVisible(true);
+                new CommunityAdminHomePage().setVisible(true);
                 dispose();
             }
             else {
