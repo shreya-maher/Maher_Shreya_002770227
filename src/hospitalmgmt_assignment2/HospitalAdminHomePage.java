@@ -4,6 +4,8 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
+
 /**
  *
  * @author maher
@@ -15,6 +17,9 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
      */
     public HospitalAdminHomePage() {
         initComponents();
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
+ 
     }
 
     /**
@@ -31,6 +36,7 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
         EditDoctor = new javax.swing.JButton();
         ViewRecords = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -65,37 +71,48 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
 
         jLabel1.setText("Hospital Admin Dashboard");
 
+        jButton2.setText("LOGOUT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(97, 97, 97)
-                .addComponent(AddDoctors)
-                .addGap(66, 66, 66)
-                .addComponent(FireDoctor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(EditDoctor)
-                .addGap(120, 120, 120)
+                .addGap(68, 68, 68)
+                .addComponent(AddDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(60, 60, 60)
+                .addComponent(FireDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(EditDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(ViewRecords)
                 .addGap(105, 105, 105))
             .addGroup(layout.createSequentialGroup()
                 .addGap(518, 518, 518)
                 .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(80, 80, 80))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
-                .addComponent(jLabel1)
+                .addGap(83, 83, 83)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addComponent(jButton2))
                 .addGap(260, 260, 260)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(AddDoctors)
-                    .addComponent(FireDoctor)
-                    .addComponent(EditDoctor)
-                    .addComponent(ViewRecords))
-                .addContainerGap(463, Short.MAX_VALUE))
+                    .addComponent(AddDoctors, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(FireDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ViewRecords, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(436, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,6 +141,12 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
         new HospitalAdminViewPatient().setVisible(true);
                 dispose();
     }//GEN-LAST:event_ViewRecordsActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new HomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +188,7 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
     private javax.swing.JButton EditDoctor;
     private javax.swing.JButton FireDoctor;
     private javax.swing.JButton ViewRecords;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

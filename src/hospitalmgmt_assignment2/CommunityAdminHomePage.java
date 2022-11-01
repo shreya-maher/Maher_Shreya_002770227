@@ -4,6 +4,8 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
+
 /**
  *
  * @author maher
@@ -15,6 +17,8 @@ public class CommunityAdminHomePage extends javax.swing.JFrame {
      */
     public CommunityAdminHomePage() {
         initComponents();
+         Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**
@@ -61,21 +65,18 @@ public class CommunityAdminHomePage extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(527, Short.MAX_VALUE)
+                .addContainerGap(253, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(374, 374, 374))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(412, 412, 412)
                         .addComponent(jButton2)
-                        .addGap(82, 82, 82))))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(313, 313, 313)
-                    .addComponent(Hospital)
-                    .addContainerGap(762, Short.MAX_VALUE)))
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(Hospital, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(255, 255, 255)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(299, 299, 299))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,14 +85,11 @@ public class CommunityAdminHomePage extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jLabel1))
-                .addGap(272, 272, 272)
-                .addComponent(jButton1)
-                .addContainerGap(472, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(356, 356, 356)
-                    .addComponent(Hospital)
-                    .addContainerGap(472, Short.MAX_VALUE)))
+                .addGap(274, 274, 274)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Hospital, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(424, Short.MAX_VALUE))
         );
 
         pack();

@@ -4,6 +4,7 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.sql.*;
@@ -20,6 +21,9 @@ public class DoctorLogin extends javax.swing.JFrame {
      */
     public DoctorLogin() {
         initComponents();
+        
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**
@@ -41,6 +45,7 @@ public class DoctorLogin extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 102));
         setResizable(false);
 
         jLabel1.setText("Doctor Login");

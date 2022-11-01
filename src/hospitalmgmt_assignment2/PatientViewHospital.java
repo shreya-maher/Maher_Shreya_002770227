@@ -11,6 +11,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import hospitalmgmt_assignment2.PatientLogin;
+import java.awt.Color;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +29,9 @@ public class PatientViewHospital extends javax.swing.JFrame {
      */
     public PatientViewHospital() {
         initComponents();
+        
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**
@@ -96,6 +100,8 @@ public class PatientViewHospital extends javax.swing.JFrame {
                 jTabbedPane1ComponentShown(evt);
             }
         });
+
+        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
         BostonTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -233,6 +239,8 @@ public class PatientViewHospital extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Boston", jPanel2);
 
+        jPanel3.setBackground(new java.awt.Color(102, 102, 102));
+
         NewYorkTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -369,6 +377,8 @@ public class PatientViewHospital extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("New York", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(102, 102, 102));
 
         ChicagoTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

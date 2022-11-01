@@ -4,6 +4,7 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,6 +24,8 @@ public class DoctorAppointments extends javax.swing.JFrame {
      */
     public DoctorAppointments() {
         initComponents();
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**

@@ -4,6 +4,8 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
+
 /**
  *
  * @author maher
@@ -15,6 +17,8 @@ public class SystemAdminDashboard extends javax.swing.JFrame {
      */
     public SystemAdminDashboard() {
         initComponents();
+         Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**

@@ -4,6 +4,7 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
 import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.sql.*;
@@ -23,6 +24,9 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
      */
     public AddEncounterAndVitals() {
         initComponents();
+        
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**

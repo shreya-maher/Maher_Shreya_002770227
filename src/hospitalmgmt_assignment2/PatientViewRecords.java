@@ -5,6 +5,7 @@
 package hospitalmgmt_assignment2;
 
 import hospitalmgmt_assignment2.PatientLogin;
+import java.awt.Color;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -25,7 +26,13 @@ public class PatientViewRecords extends javax.swing.JFrame {
      */
     public PatientViewRecords() {
         initComponents();
+        
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

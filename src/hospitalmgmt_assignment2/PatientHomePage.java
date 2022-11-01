@@ -4,6 +4,8 @@
  */
 package hospitalmgmt_assignment2;
 
+import java.awt.Color;
+
 /**
  *
  * @author maher
@@ -15,6 +17,9 @@ public class PatientHomePage extends javax.swing.JFrame {
      */
     public PatientHomePage() {
         initComponents();
+        
+        Color c = new Color(102,102,102);
+        getContentPane().setBackground(c);
     }
 
     /**
