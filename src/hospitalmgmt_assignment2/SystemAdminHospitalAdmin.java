@@ -50,6 +50,7 @@ public class SystemAdminHospitalAdmin extends javax.swing.JFrame {
         AgeField = new javax.swing.JTextField();
         NameField = new javax.swing.JTextField();
         Delete = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -115,6 +116,8 @@ public class SystemAdminHospitalAdmin extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Manage Hospital Admin");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,6 +152,8 @@ public class SystemAdminHospitalAdmin extends javax.swing.JFrame {
                             .addComponent(NameField))
                         .addGap(385, 385, 385))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(460, 460, 460)
                         .addComponent(Submit1)
                         .addGap(36, 36, 36))))
         );
@@ -156,7 +161,9 @@ public class SystemAdminHospitalAdmin extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(Submit1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Submit1)
+                    .addComponent(jLabel6))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
@@ -363,6 +370,7 @@ public class SystemAdminHospitalAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

@@ -42,6 +42,7 @@ public class CommunityAdminHospital extends javax.swing.JFrame {
         Community = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -99,12 +100,16 @@ public class CommunityAdminHospital extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Manage Hospitals In Community");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(408, 408, 408)
                 .addComponent(jButton2)
                 .addGap(38, 38, 38))
             .addGroup(layout.createSequentialGroup()
@@ -130,7 +135,9 @@ public class CommunityAdminHospital extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1))
                 .addGap(51, 51, 51)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(125, 125, 125)
@@ -157,6 +164,21 @@ public class CommunityAdminHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+          if(Community.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Community is Required");
+        Community.requestFocus();
+        return;
+        }
+    
+    
+    if(Hospital.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Hospital is Required");
+        Hospital.requestFocus();
+        return;
+        }
+        
+        
+        
         String cityFieldNew = "";
         String hospitalFieldNew = Hospital.getText();
         String CommunityFieldNew = Community.getText();
@@ -306,6 +328,7 @@ public class CommunityAdminHospital extends javax.swing.JFrame {
     private javax.swing.JTextField Hospital;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;

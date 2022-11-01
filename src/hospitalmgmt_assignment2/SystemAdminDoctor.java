@@ -50,6 +50,7 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
         CityText = new javax.swing.JTextField();
         Update = new javax.swing.JButton();
         Delete = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -116,6 +117,8 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
             }
         });
 
+        jLabel7.setText("Manage Doctor");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -147,13 +150,18 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
                         .addGap(454, 454, 454)
                         .addComponent(Update)
                         .addGap(111, 111, 111)
-                        .addComponent(Delete)))
+                        .addComponent(Delete))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(559, 559, 559)
+                        .addComponent(jLabel7)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(71, 71, 71)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel7)
+                .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -352,6 +360,7 @@ public class SystemAdminDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

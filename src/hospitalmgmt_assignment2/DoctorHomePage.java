@@ -33,6 +33,8 @@ public class DoctorHomePage extends javax.swing.JFrame {
         PatientHistory = new javax.swing.JButton();
         AddVitalsEncounter = new javax.swing.JButton();
         ViewAppointments = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -58,6 +60,15 @@ public class DoctorHomePage extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("LOGOUT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Doctor Dashboard");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -70,11 +81,21 @@ public class DoctorHomePage extends javax.swing.JFrame {
                 .addGap(176, 176, 176)
                 .addComponent(ViewAppointments)
                 .addGap(225, 225, 225))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(419, 419, 419)
+                .addComponent(jButton2)
+                .addGap(76, 76, 76))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(320, 320, 320)
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1))
+                .addGap(248, 248, 248)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PatientHistory)
                     .addComponent(AddVitalsEncounter)
@@ -104,6 +125,12 @@ public class DoctorHomePage extends javax.swing.JFrame {
         new AddEncounterAndVitals().setVisible(true);
                 dispose();
     }//GEN-LAST:event_AddVitalsEncounterActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new HomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -144,5 +171,7 @@ public class DoctorHomePage extends javax.swing.JFrame {
     private javax.swing.JButton AddVitalsEncounter;
     private javax.swing.JButton PatientHistory;
     private javax.swing.JButton ViewAppointments;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

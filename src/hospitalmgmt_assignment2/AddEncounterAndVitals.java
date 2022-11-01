@@ -8,6 +8,8 @@ import java.lang.System.Logger;
 import java.lang.System.Logger.Level;
 import java.sql.*;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -46,6 +48,9 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         DiagnosesText = new javax.swing.JTextArea();
         Submit = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -73,10 +78,30 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
             }
         });
 
+        jButton2.setText("LOGOUT");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Add Encounter And Vitals");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(534, 534, 534)
+                .addComponent(Submit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(359, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,15 +126,24 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
                             .addComponent(PatientIDText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BloodPressureText, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(367, 367, 367))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(534, 534, 534)
-                .addComponent(Submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jButton1)
+                .addGap(392, 392, 392)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2)
+                .addGap(78, 78, 78))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
+                .addGap(45, 45, 45)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton1)
+                    .addComponent(jLabel1))
+                .addGap(59, 59, 59)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PatientID1)
                     .addComponent(PatientIDText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -143,6 +177,92 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
+        String pat =  "";
+        String match1 = "";
+        String match2 = "";
+        //patient validation
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection docConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            String DocSql = ("select patientid from patientrecords where patientid = '"+PatientIDText.getText()+"' ");
+            PreparedStatement DocPreparedStatement = docConnection.prepareStatement(DocSql);            
+            ResultSet commResultSet = DocPreparedStatement.executeQuery();
+            while(commResultSet.next())
+            {
+            pat = commResultSet.getString("patientid");
+            }
+  
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        
+        if(pat.equals("")) {
+        JOptionPane.showMessageDialog(null,"Patient ID doesnt exists in the System, please ask Patient to first register");
+        PatientIDText.requestFocus();
+        return;
+        }
+        //blood pressure
+        if(BloodPressureText.getText().equals("")){
+        JOptionPane.showMessageDialog(null,"Blood Pressure Required");
+        BloodPressureText.requestFocus();
+        return;
+        }
+        
+        //body temperature
+        if(BodyTemperatureText.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Body Temperature Required");
+        BodyTemperatureText.requestFocus();
+        return;
+        }
+        
+        if(Pattern.matches("[0-9]{2,3}+", BodyTemperatureText.getText())){
+        match1 = "1";        
+        }      
+        
+        if(match1.equals("")){
+        JOptionPane.showMessageDialog(null,"Body Temperature should range in 2 digits or 3 digits input");
+        BodyTemperatureText.requestFocus();
+        return;
+        }
+        
+        //pulse rate
+        if(PulseRateText.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Pulse Rate Required");
+        PulseRateText.requestFocus();
+        return;
+        }
+        
+        if(Pattern.matches("[0-9]{2,3}+", PulseRateText.getText())){
+        match2 = "1";        
+        }      
+        
+        if(match2.equals("")){
+        JOptionPane.showMessageDialog(null,"Pulse should range in 2 digits or 3 digits input");
+        PulseRateText.requestFocus();
+        return;
+        }
+        
+        //diagnoses
+        if(DiagnosesText.getText().equals("")){
+        JOptionPane.showMessageDialog(null,"Diagnoses Required");
+        DiagnosesText.requestFocus();
+        return;
+        }
+        
+        //date
+        String regex = "^(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/[0-9]{4}$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(EncounterText.getText());
+        if(matcher.matches()==false){
+            JOptionPane.showMessageDialog(null,"Date Not Valid, only dd/mm/yyyy allowed");
+            EncounterText.requestFocus();
+            return;
+        }
+ 
+
+        
         String patientID = PatientIDText.getText();
         String bloodPressure = BloodPressureText.getText();
         String heartRate = PulseRateText.getText();
@@ -174,6 +294,18 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
    
     }
     }//GEN-LAST:event_SubmitActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new HomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        new DoctorHomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -224,6 +356,9 @@ public class AddEncounterAndVitals extends javax.swing.JFrame {
     private javax.swing.JTextField PatientIDText;
     private javax.swing.JTextField PulseRateText;
     private javax.swing.JButton Submit;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

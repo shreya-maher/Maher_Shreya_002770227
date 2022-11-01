@@ -9,6 +9,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +45,7 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
         NameField = new javax.swing.JTextField();
         AgeField = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,15 +66,14 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
 
         jLabel5.setText("Admin Phone No");
 
+        jLabel6.setText("Add Community (System Admin Only)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(491, 491, 491)
-                        .addComponent(Submit))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(394, 394, 394)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -84,7 +85,12 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
                             .addComponent(NameField)
                             .addComponent(HospitalField)
                             .addComponent(PasswordField)
-                            .addComponent(AdminField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(AdminField, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(491, 491, 491)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(Submit))))
                 .addContainerGap(327, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -98,7 +104,9 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(256, Short.MAX_VALUE)
+                .addGap(70, 70, 70)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                 .addComponent(AdminField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,6 +139,66 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
+         String hosp =  "1";    
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection docConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            String DocSql = ("select username from communityadmin where username = '"+AdminField.getText()+"' ");
+            PreparedStatement DocPreparedStatement = docConnection.prepareStatement(DocSql);            
+            ResultSet commResultSet = DocPreparedStatement.executeQuery();
+            while(commResultSet.next())
+            {
+            hosp = commResultSet.getString("username");
+            }
+  
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        
+        if(hosp != "1" || AdminField.getText().equals(""))  {
+        JOptionPane.showMessageDialog(null,"Community ID exists in system or is blank, try another ID");
+        AdminField.requestFocus();
+        return;
+        }
+        
+        
+        
+         if(PasswordField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Password Required");
+        PasswordField.requestFocus();
+        return;
+        }
+         
+          if(HospitalField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Community Name Required");
+        HospitalField.requestFocus();
+        return;
+        }
+          
+          if(NameField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Name Required");
+        NameField.requestFocus();
+        return;
+        }
+        
+          String match1 = "";
+          //phone no
+          if(AgeField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Phone No Required");
+        AgeField.requestFocus();
+        return;
+        }
+        
+        if(Pattern.matches("[0-9]{10}+", AgeField.getText())){
+        match1 = "1";        
+        }      
+        
+        if(match1.equals("")){
+        JOptionPane.showMessageDialog(null,"Make sure to enter 10 digit mobile no.");
+        AgeField.requestFocus();
+        return;
+        }
 
         String Admin = AdminField.getText();
         String Pwd = PasswordField.getText();
@@ -214,5 +282,6 @@ public class SystemAdminCommunityAdd extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

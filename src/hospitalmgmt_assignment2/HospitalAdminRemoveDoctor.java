@@ -34,9 +34,10 @@ public class HospitalAdminRemoveDoctor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        DoctorIDText = new javax.swing.JTextField();
+        DoctorID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -50,6 +51,8 @@ public class HospitalAdminRemoveDoctor extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Remove Doctor From Hospital");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -58,19 +61,26 @@ public class HospitalAdminRemoveDoctor extends javax.swing.JFrame {
                 .addContainerGap(395, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(224, 224, 224)
-                .addComponent(DoctorIDText, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(372, 372, 372))
             .addGroup(layout.createSequentialGroup()
-                .addGap(538, 538, 538)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(538, 538, 538)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(502, 502, 502)
+                        .addComponent(jLabel2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(319, 319, 319)
+                .addGap(119, 119, 119)
+                .addComponent(jLabel2)
+                .addGap(184, 184, 184)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DoctorIDText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addGap(87, 87, 87)
                 .addComponent(jButton1)
@@ -82,17 +92,41 @@ public class HospitalAdminRemoveDoctor extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        String hosp =  "";    
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection docConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            String DocSql = ("select doctorid from hospitals where doctorid = '"+DoctorID.getText()+"' ");
+            PreparedStatement DocPreparedStatement = docConnection.prepareStatement(DocSql);            
+            ResultSet commResultSet = DocPreparedStatement.executeQuery();
+            while(commResultSet.next())
+            {
+            hosp = commResultSet.getString("doctorid");
+            }
+  
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        
+        if(hosp == "" || DoctorID.getText().equals(""))  {
+        JOptionPane.showMessageDialog(null,"Doctor ID doesnt exists in system or is blank, try correct ID");
+        DoctorID.requestFocus();
+        return;
+        }
+        
+        
         try{                                       
             Class.forName("com.mysql.jdbc.Driver");
             Connection RemoveDocConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
             Statement RemoveDocStatement = (Statement) RemoveDocConnection.createStatement();
             
-            String RemoveDocSql = ("Delete from hospitals where doctorid = '"+DoctorIDText.getText()+"' ");
+            String RemoveDocSql = ("Delete from hospitals where doctorid = '"+DoctorID.getText()+"' ");
             
             
             PreparedStatement RemoveDocPS = RemoveDocConnection.prepareStatement(RemoveDocSql);
             RemoveDocPS.executeUpdate();                    
-            JOptionPane.showMessageDialog(null," '"+DoctorIDText.getText()+"' removed from Hospital " );
+            JOptionPane.showMessageDialog(null," '"+DoctorID.getText()+"' removed from Hospital " );
                
                 
         
@@ -137,8 +171,9 @@ public class HospitalAdminRemoveDoctor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DoctorIDText;
+    private javax.swing.JTextField DoctorID;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

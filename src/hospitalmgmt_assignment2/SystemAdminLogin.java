@@ -39,6 +39,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
         SystemUsernameField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -68,35 +69,46 @@ public class SystemAdminLogin extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
 
+        jButton2.setText("BACK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(540, 540, 540)
-                .addComponent(Submit)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(332, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(599, 599, 599))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addGap(127, 127, 127)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(SystemUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SystemPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(423, 423, 423))))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(127, 127, 127)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(SystemUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SystemPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(423, 423, 423))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(540, 540, 540)
+                        .addComponent(Submit))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jButton2)
+                        .addGap(445, 445, 445)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel1)
+                .addGap(49, 49, 49)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jLabel1))
                 .addGap(91, 91, 91)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SystemUsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -119,6 +131,18 @@ public class SystemAdminLogin extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
         // TODO add your handling code here:
+        if(SystemUsernameField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Username Required");
+        SystemUsernameField.requestFocus();
+        return;
+        }
+        
+        if(SystemPasswordField.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Password Required");
+        SystemPasswordField.requestFocus();
+        return;
+        }
+        
         String present;
         present = "0";
         String SystemUsernameInput = SystemUsernameField.getText();
@@ -148,7 +172,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
         dispose();
         }
         else {
-        JOptionPane.showMessageDialog(null, "Wrong credentials");
+        JOptionPane.showMessageDialog(null, "Wrong credentials. Please check credentials and try again");
         } 
         } 
         
@@ -160,6 +184,12 @@ public class SystemAdminLogin extends javax.swing.JFrame {
     private void SystemUsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SystemUsernameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SystemUsernameFieldActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        new HomePage().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,6 +231,7 @@ public class SystemAdminLogin extends javax.swing.JFrame {
     private javax.swing.JButton Submit;
     private javax.swing.JPasswordField SystemPasswordField;
     private javax.swing.JTextField SystemUsernameField;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

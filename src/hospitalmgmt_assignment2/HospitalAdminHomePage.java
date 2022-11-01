@@ -30,6 +30,7 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
         FireDoctor = new javax.swing.JButton();
         EditDoctor = new javax.swing.JButton();
         ViewRecords = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -62,6 +63,8 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Hospital Admin Dashboard");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -76,11 +79,17 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
                 .addGap(120, 120, 120)
                 .addComponent(ViewRecords)
                 .addGap(105, 105, 105))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(518, 518, 518)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(365, 365, 365)
+                .addGap(89, 89, 89)
+                .addComponent(jLabel1)
+                .addGap(260, 260, 260)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(AddDoctors)
                     .addComponent(FireDoctor)
@@ -156,5 +165,6 @@ public class HospitalAdminHomePage extends javax.swing.JFrame {
     private javax.swing.JButton EditDoctor;
     private javax.swing.JButton FireDoctor;
     private javax.swing.JButton ViewRecords;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

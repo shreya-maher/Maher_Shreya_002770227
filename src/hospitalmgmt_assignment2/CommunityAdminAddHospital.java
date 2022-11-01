@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  *
@@ -44,6 +46,7 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         doctorid = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +79,8 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
 
         jLabel7.setText("Doctor ID");
 
+        jLabel3.setText("Add Hospital (Community Admin Only)");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,13 +103,17 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
                 .addGap(410, 410, 410))
             .addGroup(layout.createSequentialGroup()
                 .addGap(484, 484, 484)
-                .addComponent(jButton1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addGap(58, 58, 58)
+                .addComponent(jLabel3)
+                .addGap(106, 106, 106)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(hospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
@@ -134,12 +143,9 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
 
     private void doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorActionPerformed
         // TODO add your handling code here:
-        
    
-    
-    
-    
-    
+        
+     
     
     
         
@@ -147,6 +153,63 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+           String hosp =  "1";    
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection docConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            String DocSql = ("select hospitalid from hospitals where hospitalid = '"+hospital.getText()+"' ");
+            PreparedStatement DocPreparedStatement = docConnection.prepareStatement(DocSql);            
+            ResultSet commResultSet = DocPreparedStatement.executeQuery();
+            while(commResultSet.next())
+            {
+            hosp = commResultSet.getString("hospitalid");
+            }
+  
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        
+        if(hosp != "1" || hospital.getText().equals(""))  {
+        JOptionPane.showMessageDialog(null,"Hospital ID exists in system or is blank, try another ID");
+        hospital.requestFocus();
+        return;
+        }
+     
+    
+    if(hospitalName.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Hospital Name Required");
+        hospitalName.requestFocus();
+        return;
+        }
+    
+      
+    if(doctor.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Doctor Name Required");
+        doctor.requestFocus();
+        return;
+        }
+    
+      
+    if(specialisation.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Specialisation Required");
+        specialisation.requestFocus();
+        return;
+        }
+    
+      
+    if(doctorid.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Doctor ID Required");
+        doctorid.requestFocus();
+        return;
+        }
+    
+    
+    
+    
+    
+        
+        
       String Community_Name = "";
       String cityFieldNew = "";
        String caUserID = CommunityAdminLogin.CommunityUsernameField.getText();
@@ -257,9 +320,6 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Submit;
-    private javax.swing.JButton Submit1;
-    private javax.swing.JButton Submit2;
     private javax.swing.JTextField doctor;
     private javax.swing.JTextField doctorid;
     private javax.swing.JTextField hospital;
@@ -267,6 +327,7 @@ public class CommunityAdminAddHospital extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

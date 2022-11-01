@@ -46,6 +46,7 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
         DocCommunity = new javax.swing.JTextField();
         DocCity = new javax.swing.JTextField();
         DocAdd = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -72,36 +73,45 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Add Doctors To Hospital");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(420, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(287, 287, 287)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(530, 530, 530))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel5))
-                        .addGap(203, 203, 203)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(DoctorID)
-                            .addComponent(DocName)
-                            .addComponent(DocSpecialisation)
-                            .addComponent(DocCommunity)
-                            .addComponent(DocCity, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(474, 474, 474)
-                        .addComponent(DocAdd)))
-                .addContainerGap(505, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel5))
+                                .addGap(203, 203, 203)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(DoctorID)
+                                    .addComponent(DocName)
+                                    .addComponent(DocSpecialisation)
+                                    .addComponent(DocCommunity)
+                                    .addComponent(DocCity, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(187, 187, 187)
+                                .addComponent(DocAdd)))
+                        .addGap(372, 372, 372))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(235, 235, 235)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(89, 89, 89)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(DoctorID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -123,7 +133,7 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
                     .addComponent(DocCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(104, 104, 104)
                 .addComponent(DocAdd)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addGap(214, 214, 214))
         );
 
         pack();
@@ -135,6 +145,55 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
 
     private void DocAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocAddActionPerformed
         // TODO add your handling code here:
+        String hosp =  "";    
+        try{
+            
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection docConnection = DriverManager.getConnection("jdbc:mysql://localhost/hospital","root", "");
+            String DocSql = ("select doctorid from hospitals where doctorid = '"+DoctorID.getText()+"' ");
+            PreparedStatement DocPreparedStatement = docConnection.prepareStatement(DocSql);            
+            ResultSet commResultSet = DocPreparedStatement.executeQuery();
+            while(commResultSet.next())
+            {
+            hosp = commResultSet.getString("doctorid");
+            }
+  
+        }catch(Exception e){
+        JOptionPane.showMessageDialog(null, e);
+        }
+        
+        if(hosp == "" || DoctorID.getText().equals(""))  {
+        JOptionPane.showMessageDialog(null,"Doctor ID doesnt exists in system or is blank, try correct ID/create Doctor profile first");
+        DoctorID.requestFocus();
+        return;
+        }
+        
+         if(DocName.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Name Required");
+        DocName.requestFocus();
+        return;
+        }
+         
+          if(DocSpecialisation.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Specialisation Required");
+        DocSpecialisation.requestFocus();
+        return;
+        }
+          
+          if(DocCommunity.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"Community Required");
+        DocCommunity.requestFocus();
+        return;
+        }
+           
+        if(DocCity.getText().equals("")) {
+        JOptionPane.showMessageDialog(null,"City Required");
+        DocCity.requestFocus();
+        return;
+        }
+        
+        
+        
         
         try{   
             
@@ -233,5 +292,6 @@ public class HospitalAdminAddDoctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }
