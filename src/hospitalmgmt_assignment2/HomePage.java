@@ -46,7 +46,9 @@ public class HomePage extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
+        SystemAdmin.setBackground(new java.awt.Color(0, 0, 0));
         SystemAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        SystemAdmin.setForeground(new java.awt.Color(255, 255, 255));
         SystemAdmin.setText("System Admin");
         SystemAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,7 +56,9 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        HospitalAdmin.setBackground(new java.awt.Color(0, 0, 0));
         HospitalAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        HospitalAdmin.setForeground(new java.awt.Color(255, 255, 255));
         HospitalAdmin.setText("Hospital Admin");
         HospitalAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +66,9 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        CommunityAdmin.setBackground(new java.awt.Color(0, 0, 0));
         CommunityAdmin.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        CommunityAdmin.setForeground(new java.awt.Color(255, 255, 255));
         CommunityAdmin.setText("Community Admin");
         CommunityAdmin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,7 +76,9 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        Patient.setBackground(new java.awt.Color(0, 0, 0));
         Patient.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Patient.setForeground(new java.awt.Color(255, 255, 255));
         Patient.setText("Patient");
         Patient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +86,9 @@ public class HomePage extends javax.swing.JFrame {
             }
         });
 
+        Doctor.setBackground(new java.awt.Color(0, 0, 0));
         Doctor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Doctor.setForeground(new java.awt.Color(255, 255, 255));
         Doctor.setText("Doctor");
         Doctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,8 +107,14 @@ public class HomePage extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(80, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(192, 192, 192))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(82, 82, 82))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(Doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(59, 59, 59)
@@ -109,29 +125,23 @@ public class HomePage extends javax.swing.JFrame {
                         .addComponent(HospitalAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(66, 66, 66)
                         .addComponent(SystemAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(69, 69, 69))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(192, 192, 192))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(82, 82, 82))))
+                        .addGap(67, 67, 67))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(128, 128, 128)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SystemAdmin)
                     .addComponent(HospitalAdmin)
                     .addComponent(CommunityAdmin)
                     .addComponent(Patient)
                     .addComponent(Doctor))
-                .addGap(140, 140, 140))
+                .addGap(221, 221, 221))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
